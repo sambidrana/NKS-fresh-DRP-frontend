@@ -1,3 +1,4 @@
+import CartContextProvider from "@/components/CartContext";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
@@ -8,14 +9,15 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Poppins', sans-serif;
     background-color: #f0f0f0;
     scroll-behavior: smooth;
-
   }
 `;
 export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyles />
-      <Component {...pageProps} />
+      <CartContextProvider>
+        <Component {...pageProps} />
+      </CartContextProvider>
     </>
   );
 }

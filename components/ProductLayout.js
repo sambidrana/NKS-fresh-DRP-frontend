@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { useContext } from "react";
 import styled from "styled-components";
 import Button from "./Button";
+import { CartContext } from "./CartContext";
 import CartIcon from "./icons/CartIcon";
 
 const ProductWrapper = styled.div`
@@ -53,7 +55,13 @@ export default function ProductLayout({
   price,
   images,
 }) {
+  const {addProduct} = useContext(CartContext);
   const url = "/product/" + _id;
+  
+  function addLatestToCart() {
+    // setCartProducts(prev => [...prev, _id])
+    addProduct(_id)
+  }
   return (
     <ProductWrapper>
       <ImgBox href={url}>
@@ -66,7 +74,7 @@ export default function ProductLayout({
         <PriceRow>
           <Price>AU${price}</Price>
           {/* <div> */}
-          <Button $primary $outline>
+          <Button onClick={addLatestToCart} $primary $outline>
             Add to cart
           </Button>
           {/* </div> */}

@@ -4,10 +4,11 @@ import Button from "./Button";
 import ButtonLink from "./ButtonLink";
 
 const Bg = styled.div`
-  background-color: #222;
+  /* background-color: #222; */
   color: #fff;
   height: 100%;
-  padding: 50px 0;
+  padding: 50px 10px;
+  margin-top: 0.5px;
 `;
 const HomeImg = styled.div`
   margin: 0 auto;
@@ -21,17 +22,28 @@ const HomeImg = styled.div`
     height: 100%;
     object-fit: cover; // This is the magic property
     max-height: 500px; // Prevent the image from being too tall
+    border-radius: 10px;
   }
 `;
 const Title = styled.h1`
+  font-family: "Dancing Script", sans-serif;
+  word-spacing: 4px;
+  letter-spacing: 2px;
+  color: black;
+  /* text-shadow: 0 0 15px rgba(255, 255, 255, 0.9); */
   margin: 0;
+  margin-bottom: 10px;
   font-weight: normal;
   font-size: 3rem;
   text-align: center;
+  span {
+    text-decoration: underline;
+  }
 `;
 const Description = styled.p`
   color: #aaa;
   font-size: 1rem;
+  padding: 10px 20px 5px 20px;
 `;
 const ColumnsWrapper = styled.div`
   /* display: grid; */
@@ -56,9 +68,21 @@ const BtnWrapper = styled.div`
   justify-content: center; // Horizontally centers children in the flex container
 `;
 export default function Featured() {
+  function scrollFunction1(event) {
+    event.preventDefault(); // This stops the default anchor behavior
+    let e = document.getElementById("aboutSection");
+    e.scrollIntoView({
+      block: "start",
+      behavior: "smooth",
+      inline: "start",
+    });
+  }
+
   return (
     <Bg>
-      <Title>NKS Fresh </Title>
+      <Title>
+        NKS F<span>resh</span>{" "}
+      </Title>
       <HomeImg>
         <img src="/images/home.jpeg" alt="temp pic" />
       </HomeImg>
@@ -66,15 +90,14 @@ export default function Featured() {
         <ColumnsWrapper>
           <Column>
             <Description>
-              Our fruit shop was founded by two friends who share a love for
-              fresh, tasty produce. We source our apples and plums from local
-              farmers and suppliers, ensuring that our customers receive the
-              freshest fruit available. Our commitment to quality and
-              sustainability is reflected in everything we do, from the way we
-              grow our fruit to the way we package and deliver it.
+              Your one-stop-shop for the freshest, most delicious apples and
+              plums in Australia. Our fruit is hand-picked and delivered
+              straight to your doorstep, so you can enjoy the taste of
+              farm-fresh produce without ever leaving your home. Browse our
+              selection of premium fruit today and taste the difference!
             </Description>
             <BtnWrapper>
-              <ButtonLink href="/" $white $outline>
+              <ButtonLink href="#aboutSection" onClick={e => scrollFunction1(e)} $white $outline>
                 Read more
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

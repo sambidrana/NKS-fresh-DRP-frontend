@@ -27,7 +27,7 @@ export const ButtonStyle = css`
     props.$white &&
     props.$outline &&
     css`
-      background-color: transparent;
+      background-color: rgba(37, 30, 34, 0.6);
       color: #fff;
       border: 1px solid white;
     `}
@@ -48,6 +48,13 @@ export const ButtonStyle = css`
       border: 2px solid #5542f6;
       color: #5542f6;
       padding: 8px 20px;
+    `};
+  ${(props) =>
+    props.$primary &&
+    props.$block &&
+    css`
+      display: block;
+      width: 100%;
     `};
 
   &:hover {
@@ -75,6 +82,13 @@ export const ButtonStyle = css`
         color: #fff;
         padding: 8px 20px;
         box-shadow: 0 0 5px #5542e6;
+      `};
+    ${(props) =>
+      props.$primary &&
+      props.$block &&
+      css`
+        background-color: rgba(13, 13, 13, 0.8);
+        color: white;
       `};
   }
 `;

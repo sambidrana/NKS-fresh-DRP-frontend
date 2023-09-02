@@ -13,6 +13,7 @@ const Title = styled.h2`
   font-size: 2rem;
   font-weight: 600;
 `;
+
 function Products({ products }) {
   console.log(products);
   return (
@@ -22,7 +23,7 @@ function Products({ products }) {
         <Title>All Products</Title>
         <ProductsGrid>
           {products.map((product) => (
-            <ProductLayout {...product} />
+            <ProductLayout key={product._id} {...product} />
           ))}
         </ProductsGrid>
       </Center>
@@ -34,7 +35,7 @@ export async function getServerSideProps() {
   try {
     const response = await fetch("http://localhost:3000/api/products");
     const products = await response.json();
-    console.log(products);
+    // console.log(products);
     return {
       props: {
         products,

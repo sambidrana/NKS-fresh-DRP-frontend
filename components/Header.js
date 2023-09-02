@@ -1,10 +1,14 @@
 import Link from "next/link";
+import { useContext } from "react";
 import styled from "styled-components";
+import { CartContext } from "./CartContext";
 import Center from "./Center";
 
 const StyledHeader = styled.header`
   background-color: #222;
-`;
+  box-shadow: 0 0 15px black;
+  border-radius: 0 0 10px 10px;
+  `;
 const Logo = styled(Link)`
   color: #fff;
   text-decoration: none;
@@ -29,17 +33,19 @@ const NavLinks = styled(Link)`
   }
 `;
 export default function Header() {
+  const {cartProducts} = useContext(CartContext)
+  // console.log(cartProducts)
   return (
     <StyledHeader>
       <Center>
         <Wrapper>
           <Logo href={"/"}> NKS Fresh </Logo>
           <StyledNav>
-            <NavLinks href={"/"}>Home</NavLinks>
+            {/* <NavLinks href={"/"}>Home</NavLinks> */}
             <NavLinks href={"/products"}>All Products</NavLinks>
             <NavLinks href={"categories"}>Categories</NavLinks>
             <NavLinks href={"/accont"}>Account</NavLinks>
-            <NavLinks href={"/cart"}>Cart (0)</NavLinks>
+            <NavLinks href={"/cart"}>Cart ({cartProducts.length})</NavLinks>
           </StyledNav>
         </Wrapper>
       </Center>
