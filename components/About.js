@@ -22,44 +22,68 @@ const Bg = styled.div`
 
 const Container = styled.div`
   padding: 5px;
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  grid-template-rows: 750px; /* Set the row height explicitly */
+  @media screen and (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-rows: 750px; /* Set the row height explicitly */
+  }
 `;
 const LeftWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; // This ensures the items inside are spread out vertically
-  align-items: center; // This will center the items horizontally
-  height: 600px;
+  height: 500px;
   overflow: hidden; // Hide any content that might overflow
+  text-align: center;
+
   img {
-    max-height: 500px; // Assuming h1 has a size around 1.5em, adjust if needed
+    max-height: 400px; // Assuming h1 has a size around 1.5em, adjust if needed
     width: auto; // Preserve the aspect ratio of the image
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-    margin-top: 80px;
   }
   h1 {
     font-family: "Dancing Script", sans-serif;
     color: rgba(36, 30, 33, 0.8);
     word-spacing: 3px;
-    font-size: 2rem;
-    padding: 15px;
+    font-size: 1.6rem;
+    padding: 5px;
+    margin-bottom: 30px;
     background-color: rgba(255, 255, 255, 0.2);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  }
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; // This ensures the items inside are spread out vertically */
+    align-items: center; // This will center the items horizontally
+    justify-content: space-between; // This ensures the items inside are spread out vertically
+    height: 600px;
+
+    h1 {
+      font-size: 2rem;
+      padding: 15px;
+      margin-bottom: 100px;
+    }
+    img {
+      max-height: 300px; // Assuming h1 has a size around 1.5em, adjust if needed
+      max-height: 400px; // Assuming h1 has a size around 1.5em, adjust if needed
+    }
   }
 `;
 const RightWrap = styled.div`
   display: flex;
   align-items: end;
+
   p {
     color: rgba(36, 30, 33, 0.8);
     background-color: rgba(255, 255, 255, 0.2);
     padding: 10px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
     font-weight: 600;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 1.1rem;
   }
 `;
 export default function About() {

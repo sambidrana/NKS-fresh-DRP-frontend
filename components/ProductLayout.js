@@ -5,9 +5,7 @@ import Button from "./Button";
 import { CartContext } from "./CartContext";
 import CartIcon from "./icons/CartIcon";
 
-const ProductWrapper = styled.div`
-
-`;
+const ProductWrapper = styled.div``;
 
 const ImgBox = styled(Link)`
   box-sizing: border-box;
@@ -25,7 +23,6 @@ const ImgBox = styled(Link)`
   }
   :hover {
     transform: scale(1.05);
-
   }
 `;
 const Title = styled(Link)`
@@ -39,14 +36,24 @@ const ProductInfoBox = styled.div`
   margin-top: 10px;
 `;
 const PriceRow = styled.div`
-  display: flex;
+  display: block;
   align-items: center;
   justify-content: space-between;
   margin-top: 2px;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
 `;
 const Price = styled.div`
-  font-size: 1.1rem;
-  font-weight: 600;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    @media screen and (min-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom: 0px;
+
+  }
 `;
 export default function ProductLayout({
   _id,
@@ -55,12 +62,12 @@ export default function ProductLayout({
   price,
   images,
 }) {
-  const {addProduct} = useContext(CartContext);
+  const { addProduct } = useContext(CartContext);
   const url = "/product/" + _id;
-  
+
   function addLatestToCart() {
     // setCartProducts(prev => [...prev, _id])
-    addProduct(_id)
+    addProduct(_id);
   }
   return (
     <ProductWrapper>

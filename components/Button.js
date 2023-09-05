@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 export const ButtonStyle = css`
   font-family: "Poppins", sans-serif;
+  font-size: .62rem;
   font-weight: 500;
   border: 0;
   padding: 8px 15px;
@@ -11,7 +12,9 @@ export const ButtonStyle = css`
   cursor: pointer;
   text-decoration: none;
   transition: all 0.2s ease;
-
+  @media screen and (min-width: 768px) {
+    font-size: .8rem;
+  }
   svg {
     height: 20px;
     margin-left: 3px;

@@ -7,8 +7,11 @@ const Bg = styled.div`
   /* background-color: #222; */
   color: #fff;
   height: 100%;
-  padding: 50px 10px;
+  padding: 30px 10px;
   margin-top: 0.5px;
+  @media screen and (min-width: 768px) {
+    padding: 50px 10px;
+  }
 `;
 const HomeImg = styled.div`
   margin: 0 auto;
@@ -19,10 +22,16 @@ const HomeImg = styled.div`
   overflow: hidden; // In case the image overflows this container
   img {
     width: 100%;
-    height: 100%;
+    height: 300px;
     object-fit: cover; // This is the magic property
-    max-height: 500px; // Prevent the image from being too tall
     border-radius: 10px;
+  }
+
+  @media screen and (min-width: 768px) {
+    img {
+      height: 100%;
+      max-height: 500px; // Prevent the image from being too tall
+    }
   }
 `;
 const Title = styled.h1`
@@ -34,16 +43,20 @@ const Title = styled.h1`
   margin: 0;
   margin-bottom: 10px;
   font-weight: normal;
-  font-size: 3rem;
+  font-size: 1.5rem;
   text-align: center;
   span {
     text-decoration: underline;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 3rem;
   }
 `;
 const Description = styled.p`
   color: #aaa;
   font-size: 1rem;
   padding: 10px 20px 5px 20px;
+  
 `;
 const ColumnsWrapper = styled.div`
   /* display: grid; */
@@ -57,15 +70,21 @@ const Column = styled.div`
   /* display: flex;
   align-items: center; */
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1fr
   gap: 40px;
+  @media screen and (min-width: 768px) {
+  grid-template-columns: 1fr 1fr;
+
+  }
 `;
 const BtnWrapper = styled.div`
   display: flex;
   gap: 10px;
-  margin-bottom: 10px;
-  align-items: end; // Vertically centers children in the flex container
+  align-items: center; // Vertically centers children in the flex container
   justify-content: center; // Horizontally centers children in the flex container
+  @media screen and (min-width: 768px) {
+    margin-top: 50px;
+  }
 `;
 export default function Featured() {
   function scrollFunction1(event) {
@@ -97,7 +116,12 @@ export default function Featured() {
               selection of premium fruit today and taste the difference!
             </Description>
             <BtnWrapper>
-              <ButtonLink href="#aboutSection" onClick={e => scrollFunction1(e)} $white $outline>
+              <ButtonLink
+                href="#aboutSection"
+                onClick={(e) => scrollFunction1(e)}
+                $white
+                $outline
+              >
                 Read more
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
