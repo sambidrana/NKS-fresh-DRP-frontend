@@ -55,6 +55,9 @@ const Price = styled.div`
 
   }
 `;
+const BtnContainer = styled.div`
+  text-align: center;
+`
 export default function ProductLayout({
   _id,
   productName,
@@ -80,11 +83,11 @@ export default function ProductLayout({
         <Title href={url}>{productName}</Title>
         <PriceRow>
           <Price>AU${price}</Price>
-          {/* <div> */}
+          <BtnContainer>
           <Button onClick={addLatestToCart} $primary $outline>
             Add to cart
           </Button>
-          {/* </div> */}
+          </BtnContainer>
         </PriceRow>
       </ProductInfoBox>
     </ProductWrapper>

@@ -10,6 +10,14 @@ const GlobalStyles = createGlobalStyle`
     background-color: #f0f0f0;
     scroll-behavior: smooth;
   }
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;
+  }
+  html, body {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
 `;
 export default function App({ Component, pageProps }) {
   return (

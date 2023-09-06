@@ -84,7 +84,6 @@ export const ButtonStyle = css`
         background-color: #5542e6;
         color: #fff;
         padding: 8px 20px;
-        box-shadow: 0 0 5px #5542e6;
       `};
     ${(props) =>
       props.$primary &&
