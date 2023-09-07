@@ -15,28 +15,51 @@ const Title = styled.h2`
 
 const ColWrapper = styled.div`
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  gap: 40px;
+  grid-template-columns: 1fr;
   margin-top: 40px;
+  @media screen and (min-width: 768px) {
+    gap: 40px;
+    grid-template-columns: 0.8fr 1.2fr;
+  }
 `;
 const WhiteBox = styled.div`
   background-color: #fff;
   border-radius: 10px;
   padding: 30px;
 `;
+const ProductDescription = styled.div`
+  background-color: rgba(0, 0, 0, 0.03);
+  padding: 20px;
+  margin-bottom: 10px;
+`;
 
+const ProductPrice = styled.p`
+  font-size: 1.5rem;
+  color: rgba(31, 25, 25, 0.8);
+  font-weight: 600;
+  padding: 10px;
+
+`;
 const PriceRow = styled.div`
   display: flex;
-  gap: 20px;
+  justify-content: center;
   align-items: center;
 
-  div {
-    font-size: 1.4rem;
+  Button {
+    font-size: 1rem;
   }
-  
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    gap: 20px;
+    justify-content: start;
+    Button {
+      font-size: 0.9rem;
+    }
+  }
 `;
 export default function ProductPage({ product }) {
-    const {addProduct} = useContext(CartContext)
+  const { addProduct } = useContext(CartContext);
   //   const router = useRouter();
   //   const productId = router.query.id;
 
@@ -60,9 +83,9 @@ export default function ProductPage({ product }) {
           </WhiteBox>
           <div>
             <Title>{product.productName}</Title>
-            <p>{product.description}</p>
+            <ProductPrice>${product.price}</ProductPrice>
+            <ProductDescription>{product.description}</ProductDescription>
             <PriceRow>
-              <div>${product.price}</div>
               <Button $primary onClick={() => addProduct(product._id)}>
                 <CartIcon /> Add to cart
               </Button>
@@ -81,7 +104,7 @@ export async function getServerSideProps(context) {
     const response = await fetch(`http://localhost:3000/api/products?id=${id}`);
     const product = await response.json();
 
-    console.log(product);
+    // console.log(product);
     return {
       props: {
         product,

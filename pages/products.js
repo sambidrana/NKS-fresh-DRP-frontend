@@ -1,4 +1,5 @@
 import Center from "@/components/Center";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ProductLayout from "@/components/ProductLayout";
 import styled from "styled-components";
@@ -9,10 +10,14 @@ const ProductsGrid = styled.div`
   gap: 20px;
   padding-top: 30px;
 `;
+const FooterContainer = styled.div`
+  margin-top: 200px;
+`;
 const Title = styled.h2`
   font-size: 2rem;
   font-weight: 600;
 `;
+
 
 function Products({ products }) {
   console.log(products);
@@ -27,6 +32,9 @@ function Products({ products }) {
           ))}
         </ProductsGrid>
       </Center>
+      <FooterContainer>
+        <Footer />
+      </FooterContainer>
     </div>
   );
 }

@@ -17,9 +17,19 @@ const Logo = styled(Link)`
   position: relative;
   z-index: 3;
   transition: all 0.3s ease;
+  font-size: 1.1rem;
+  font-family: "Dancing Script", sans-serif;
 
+  span {
+    text-decoration: underline;
+  }
   &:hover {
     transform: scale(1.1);
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
   }
 `;
 const Wrapper = styled.div`
@@ -105,12 +115,12 @@ export default function Header() {
     <StyledHeader>
       <Center>
         <Wrapper>
-          <Logo href={"/"}> NKS Fresh </Logo>
+          <Logo href={"/"}> NKS F<span>resh</span> </Logo>
           <StyledNav mobileNavActive={mobileNavActive}>
             {/* <NavLinks href={"/"}>Home</NavLinks> */}
             <NavLinks href={"/products"}>All Products</NavLinks>
-            {/* <NavLinks href={"categories"}>Categories</NavLinks> */}
             <NavLinks href={"/aboutus"}>About Us</NavLinks>
+            <NavLinks href={"contact"}>Contact</NavLinks>
             <NavLinks href={"/cart"}>Cart ({cartProducts.length})</NavLinks>
           </StyledNav>
           <NavButton onClick={() => setMobileNavActive((prev) => !prev)}>
