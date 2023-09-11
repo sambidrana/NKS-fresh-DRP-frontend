@@ -4,12 +4,12 @@ import styled from "styled-components";
 import { CartContext } from "./CartContext";
 import Center from "./Center";
 import BarIcons from "./icons/Bars";
+import DownArrow from "./icons/DownArrow";
 
 const StyledHeader = styled.header`
   background-color: #222;
   box-shadow: 0 0 15px black;
   border-radius: 0 0 10px 10px;
-  
 `;
 const Logo = styled(Link)`
   color: #fff;
@@ -36,7 +36,6 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 20px 0;
-  
 `;
 const StyledNav = styled.nav`
   ${(props) =>
@@ -69,11 +68,35 @@ const NavLinks = styled(Link)`
   transition: all 0.3s ease;
   box-sizing: border-box;
   padding: 10px;
+
+  & span {
+    font-size: 8px;
+  }
   &:hover {
     color: #fff;
     transform: scale(1.05);
     @media screen and (min-width: 768px) {
       transform: scale(1.1);
+    }
+  }
+  @media screen and (min-width: 768px) {
+    padding: 0;
+  }
+`;
+
+const DropLinks = styled(Link)`
+  font-size: 0.8rem;
+  display: block;
+  color: #aaa;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  padding: 10px;
+  &:hover {
+    color: #fff;
+    transform: scale(1.05);
+    @media screen and (min-width: 768px) {
+      transform: scale(1.05);
     }
   }
   @media screen and (min-width: 768px) {
@@ -94,20 +117,50 @@ const NavButton = styled.button`
     display: none;
   }
 `;
+
+const DropdownMenu = styled.div`
+  display: none;
+  position: absolute;
+  background-color: #222;
+  min-width: 230px;
+  border-radius: 10px;
+  /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+  z-index: 1;
+
+  a {
+    color: #ccc;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  &:hover a {
+    color: white;
+    background-color: #222;
+  }
+`;
+
+const NavItem = styled.div`
+  position: relative;
+  &:hover ${DropdownMenu} {
+    display: block;
+  }
+`;
+
 export default function Header() {
   const { cartProducts } = useContext(CartContext);
   const [mobileNavActive, setMobileNavActive] = useState(false);
 
   useEffect(() => {
     if (mobileNavActive) {
-      document.body.style.overflow = 'hidden'; // Disables scrolling
+      document.body.style.overflow = "hidden"; // Disables scrolling
     } else {
-      document.body.style.overflow = ''; // Enables scrolling again
+      document.body.style.overflow = ""; // Enables scrolling again
     }
-  
+
     // Clean-up function: enables scrolling when component is unmounted or when mobileNavActive becomes false
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [mobileNavActive]); // The effect depends on the value of mobileNavActive
   // console.log(cartProducts)
@@ -115,11 +168,32 @@ export default function Header() {
     <StyledHeader>
       <Center>
         <Wrapper>
-          <Logo href={"/"}> NKS F<span>resh</span> </Logo>
+          <Logo href={"/"}>
+            {" "}
+            NKS F<span>resh</span>{" "}
+          </Logo>
           <StyledNav mobileNavActive={mobileNavActive}>
             {/* <NavLinks href={"/"}>Home</NavLinks> */}
-            <NavLinks href={"/products"}>All Products</NavLinks>
-            <NavLinks href={"/aboutus"}>About Us</NavLinks>
+            <NavItem>
+              <NavLinks href={"/products"}>All Products <span>&#x25BD;</span></NavLinks>
+              <DropdownMenu>
+                <DropLinks href={"/varities"}>Fruit Varieties</DropLinks>
+                <DropLinks href={"/seasonal"}>Seasonal Availability</DropLinks>
+                <DropLinks href={"/packaging"}>Packaging Options</DropLinks>
+              </DropdownMenu>
+            </NavItem>
+            <NavItem>
+              <NavLinks href={"/aboutus"}>
+                About Us <span>&#x25BD;</span>
+              </NavLinks>
+              <DropdownMenu>
+                <DropLinks href={"/aboutus/company"}>Company</DropLinks>
+                <DropLinks href={"/aboutus/farms"}>
+                  Farms and Packing Facility
+                </DropLinks>
+                <DropLinks href={"/aboutus/news"}>News</DropLinks>
+              </DropdownMenu>
+            </NavItem>
             <NavLinks href={"contact"}>Contact</NavLinks>
             <NavLinks href={"/cart"}>Cart ({cartProducts.length})</NavLinks>
           </StyledNav>

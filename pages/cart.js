@@ -122,10 +122,11 @@ export default function CartPage({ allProducts }) {
       clearCart()
 
       
-    } else {
-        <h1>Loading...</h1>
-    }
-  }, []);
+    } 
+    // else {
+    //     <h1>Loading...</h1>
+    // }
+  }, [isSuccess]);
 
   if ( isSuccess ) {
     return (
@@ -187,8 +188,8 @@ export default function CartPage({ allProducts }) {
                       </td>
                       <td>
                         AU$
-                        {cartProducts.filter((id) => id === product._id)
-                          .length * product.price}
+                        {(cartProducts.filter((id) => id === product._id)
+                          .length * product.price).toFixed(2) }
                       </td>
                     </tr>
                   ))}
@@ -198,7 +199,7 @@ export default function CartPage({ allProducts }) {
                     </td>
                     <td></td>
                     <td>
-                      <strong>AU${total}</strong>
+                      <strong>AU${total.toFixed(2)}</strong>
                     </td>
                   </tr>
                 </tbody>

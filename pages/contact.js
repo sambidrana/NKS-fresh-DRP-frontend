@@ -27,7 +27,9 @@ const LeftContainer = styled.div`
   }
 `;
 const RightContainer = styled.div`
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 1);
   padding: 10px;
   text-align: center;
 `;
