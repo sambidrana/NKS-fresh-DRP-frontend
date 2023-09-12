@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { CartContext } from "./CartContext";
 import Center from "./Center";
 import BarIcons from "./icons/Bars";
-import DownArrow from "./icons/DownArrow";
 
 const StyledHeader = styled.header`
   background-color: #222;
@@ -92,13 +91,20 @@ const DropLinks = styled(Link)`
   transition: all 0.3s ease;
   box-sizing: border-box;
   padding: 10px;
-  &:hover {
-    color: #fff;
-    transform: scale(1.05);
-    @media screen and (min-width: 768px) {
-      transform: scale(1.05);
+
+  span {
+    transition: all 0.3s ease;
+    display: inline-block;  /* Allows the span to be transformed */
+
+    &:hover {
+      color: #fff;
+      transform: scale(1.10);
+      @media screen and (min-width: 768px) {
+        transform: scale(1.10);
+      }
     }
   }
+
   @media screen and (min-width: 768px) {
     padding: 0;
   }
@@ -137,6 +143,8 @@ const DropdownMenu = styled.div`
   &:hover a {
     color: white;
     background-color: #222;
+  border-radius: 0 0 10px 10px ; 
+
   }
 `;
 
@@ -177,9 +185,9 @@ export default function Header() {
             <NavItem>
               <NavLinks href={"/products"}>All Products <span>&#x25BD;</span></NavLinks>
               <DropdownMenu>
-                <DropLinks href={"/varities"}>Fruit Varieties</DropLinks>
-                <DropLinks href={"/seasonal"}>Seasonal Availability</DropLinks>
-                <DropLinks href={"/packaging"}>Packaging Options</DropLinks>
+                <DropLinks href={"/product/varieties"}><span>Fruit Varieties</span></DropLinks>
+                <DropLinks href={"/seasonal"}><span>Seasonal Availability</span></DropLinks>
+                <DropLinks href={"/packaging"}><span>Packaging Options</span></DropLinks>
               </DropdownMenu>
             </NavItem>
             <NavItem>
@@ -187,11 +195,11 @@ export default function Header() {
                 About Us <span>&#x25BD;</span>
               </NavLinks>
               <DropdownMenu>
-                <DropLinks href={"/aboutus/company"}>Company</DropLinks>
+                <DropLinks href={"/aboutus/company"}><span>Company</span></DropLinks>
                 <DropLinks href={"/aboutus/farms"}>
-                  Farms and Packing Facility
+                  <span>Farms and Packing Facility</span>
                 </DropLinks>
-                <DropLinks href={"/aboutus/news"}>News</DropLinks>
+                <DropLinks href={"/aboutus/news"}><span>News</span></DropLinks>
               </DropdownMenu>
             </NavItem>
             <NavLinks href={"contact"}>Contact</NavLinks>
