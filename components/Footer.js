@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledFooter = styled.div`
   /* background-color: #f0f0f0; */
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.15);
   padding: 10px;
   margin-top: 10px;
   display: grid;

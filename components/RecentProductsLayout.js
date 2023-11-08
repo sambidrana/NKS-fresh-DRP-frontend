@@ -2,6 +2,12 @@ import Center from "./Center";
 import ProductLayout from "./ProductLayout";
 import styled from "styled-components";
 
+const BackgroundImageContainer = styled.div`
+  background-image: url("/images/coming-soon.png");
+  background-repeat: repeat;
+  background-position: center;
+  padding: 10px;
+`;
 const SliderContainer = styled.div`
   padding: 30px;
 `;
@@ -16,17 +22,19 @@ const ProductsGrid = styled.div`
 `;
 
 export default function RecentProducts({ latestProducts }) {
-//   console.log(latestProducts);
+  //   console.log(latestProducts);
   return (
     <SliderContainer>
       <H1>Latest Products</H1>
-      <Center>
-        <ProductsGrid>
-          {latestProducts.map((product) => (
-            <ProductLayout key={product._id} {...product} />
-          ))}
-        </ProductsGrid>
-      </Center>
+      <BackgroundImageContainer>
+        <Center>
+          <ProductsGrid>
+            {latestProducts.map((product) => (
+              <ProductLayout key={product._id} {...product} />
+            ))}
+          </ProductsGrid>
+        </Center>
+      </BackgroundImageContainer>
     </SliderContainer>
   );
 }

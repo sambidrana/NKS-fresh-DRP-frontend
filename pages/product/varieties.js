@@ -1,48 +1,38 @@
 import Center from "@/components/Center";
+import DisplayVarity from "@/components/DisplayVarity";
 import Header from "@/components/Header";
 import styled from "styled-components";
+import { appleContent, peachContent, pearContent  } from "@/components/content/fruitDetails";
+import Footer from "@/components/Footer";
+import PageImgWrapper from "@/components/PageImgWrapper";
 
-const HeaderWrapper = styled.div`
-  position: relative;
-  padding: 10px;
-  margin: 15px ;
-  height: 300px;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: url("/images/fruit-trees.jpg") no-repeat center center;
-    background-size: cover;
-    opacity: 0.7; /* Adjust this value for your desired opacity */
-    z-index: -1;
-  }
-`;
 
 const ParaSection = styled.div`
   padding: 20px 40px;
-  background: rgba(255,255,255, 0.7);
+  background: rgba(255, 255, 255, 0.7);
   box-shadow: 0 0 15px white;
 
-  h2{
-
+  h2 {
   }
 
-  p{
-    
+  p {
   }
-  
+`;
+
+const ImageSection = styled.div`
+  padding: 60px;
+  margin: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 `;
 export default function FruitVarieties() {
   return (
     <>
       <Header />
-      <HeaderWrapper>
+      <PageImgWrapper>
         <h2>Our Fruits for Export</h2>
-      </HeaderWrapper>
+      </PageImgWrapper>
       <Center>
         <ParaSection>
           <h3>Example</h3>
@@ -70,6 +60,15 @@ export default function FruitVarieties() {
           </p>
         </ParaSection>
       </Center>
+      <ImageSection>
+        <DisplayVarity {...appleContent} ></DisplayVarity> 
+        <DisplayVarity {...peachContent}></DisplayVarity> 
+        <DisplayVarity {...pearContent}></DisplayVarity> 
+        <DisplayVarity {...pearContent}></DisplayVarity> 
+        <DisplayVarity {...appleContent} ></DisplayVarity> 
+        <DisplayVarity {...peachContent}></DisplayVarity> 
+      </ImageSection>
+      <Footer />
     </>
   );
 }

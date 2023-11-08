@@ -9,7 +9,8 @@ const ProductWrapper = styled.div``;
 
 const ImgBox = styled(Link)`
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.5);
+  /* opacity: 0.7; */
   padding: 20px;
   height: 180px;
   display: flex;
@@ -24,6 +25,9 @@ const ImgBox = styled(Link)`
   :hover {
     transform: scale(1.05);
   }
+`;
+const ProductImg = styled.img`
+  opacity: 0.5;
 `;
 const Title = styled(Link)`
   font-weight: normal;
@@ -46,18 +50,17 @@ const PriceRow = styled.div`
   }
 `;
 const Price = styled.div`
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-    @media screen and (min-width: 768px) {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  @media screen and (min-width: 768px) {
     font-size: 1.1rem;
     margin-bottom: 0px;
-
   }
 `;
 const BtnContainer = styled.div`
   text-align: center;
-`
+`;
 export default function ProductLayout({
   _id,
   productName,
@@ -76,7 +79,7 @@ export default function ProductLayout({
     <ProductWrapper>
       <ImgBox href={url}>
         <div>
-          <img src={images[0]} />
+          <ProductImg src={images[0]} />
         </div>
       </ImgBox>
       <ProductInfoBox>
@@ -84,9 +87,9 @@ export default function ProductLayout({
         <PriceRow>
           <Price>AU${price}</Price>
           <BtnContainer>
-          <Button onClick={addLatestToCart} $primary $outline>
-            Add to cart
-          </Button>
+            <Button onClick={addLatestToCart} $primary $outline>
+              Add to cart
+            </Button>
           </BtnContainer>
         </PriceRow>
       </ProductInfoBox>

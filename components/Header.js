@@ -90,17 +90,20 @@ const DropLinks = styled(Link)`
   text-decoration: none;
   transition: all 0.3s ease;
   box-sizing: border-box;
-  padding: 10px;
+  padding: 5px;
 
+  &:hover {
+    color: white;
+  }
   span {
-    transition: all 0.3s ease;
-    display: inline-block;  /* Allows the span to be transformed */
-
+    transition: transform 0.3s ease;
+    display: inline-block; /* Allows the span to be transformed */
+    margin-top: 10px;
     &:hover {
       color: #fff;
-      transform: scale(1.10);
+      transform: scale(1.1);
       @media screen and (min-width: 768px) {
-        transform: scale(1.10);
+        transform: scale(1.1);
       }
     }
   }
@@ -127,24 +130,19 @@ const NavButton = styled.button`
 const DropdownMenu = styled.div`
   display: none;
   position: absolute;
+
   background-color: #222;
   min-width: 230px;
   border-radius: 10px;
-  /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+  padding-top: 5px;
+  box-shadow: 0 0 15px #222;
   z-index: 1;
 
   a {
-    color: #ccc;
+    color: gray;
     padding: 10px 16px;
     text-decoration: none;
     display: block;
-  }
-
-  &:hover a {
-    color: white;
-    background-color: #222;
-  border-radius: 0 0 10px 10px ; 
-
   }
 `;
 
@@ -183,11 +181,19 @@ export default function Header() {
           <StyledNav mobileNavActive={mobileNavActive}>
             {/* <NavLinks href={"/"}>Home</NavLinks> */}
             <NavItem>
-              <NavLinks href={"/products"}>All Products <span>&#x25BD;</span></NavLinks>
+              <NavLinks href={"/products"}>
+                All Products <span>&#x25BD;</span>
+              </NavLinks>
               <DropdownMenu>
-                <DropLinks href={"/product/varieties"}><span>Fruit Varieties</span></DropLinks>
-                <DropLinks href={"/seasonal"}><span>Seasonal Availability</span></DropLinks>
-                <DropLinks href={"/packaging"}><span>Packaging Options</span></DropLinks>
+                <DropLinks href={"/product/varieties"}>
+                  <span>Fruit Varieties</span>
+                </DropLinks>
+                <DropLinks href={"/product/seasonal"}>
+                  <span>Seasonal Availability</span>
+                </DropLinks>
+                <DropLinks href={"/product/packaging"}>
+                  <span>Packaging Options</span>
+                </DropLinks>
               </DropdownMenu>
             </NavItem>
             <NavItem>
@@ -195,14 +201,18 @@ export default function Header() {
                 About Us <span>&#x25BD;</span>
               </NavLinks>
               <DropdownMenu>
-                <DropLinks href={"/aboutus/company"}><span>Company</span></DropLinks>
+                <DropLinks href={"/aboutus/company"}>
+                  <span>Company</span>
+                </DropLinks>
                 <DropLinks href={"/aboutus/farms"}>
                   <span>Farms and Packing Facility</span>
                 </DropLinks>
-                <DropLinks href={"/aboutus/news"}><span>News</span></DropLinks>
+                {/* <DropLinks href={"/aboutus/news"}>
+                  <span>News</span>
+                </DropLinks> */}
               </DropdownMenu>
             </NavItem>
-            <NavLinks href={"contact"}>Contact</NavLinks>
+            <NavLinks href={"/contact"}>Contact</NavLinks>
             <NavLinks href={"/cart"}>Cart ({cartProducts.length})</NavLinks>
           </StyledNav>
           <NavButton onClick={() => setMobileNavActive((prev) => !prev)}>
